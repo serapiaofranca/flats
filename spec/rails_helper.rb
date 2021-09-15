@@ -30,6 +30,14 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+## Add to tests rspec config, rack_test
+RSpec.configure do |config|
+  config.before(type: :system) do
+    driven_by :rack_test
+  end
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
