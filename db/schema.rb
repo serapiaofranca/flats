@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_193840) do
+ActiveRecord::Schema.define(version: 2021_09_20_183114) do
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2021_09_16_193840) do
     t.integer "rooms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "pets"
+    t.integer "bathrooms"
+    t.boolean "parking_slot"
+    t.decimal "daily_rate"
   end
 
 end

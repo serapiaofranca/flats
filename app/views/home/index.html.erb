@@ -2,8 +2,12 @@
 
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
+<% if @properties.empty? %>
+  <div><span>Nenhum imóvel disponível</span></div>
+<% end %>
+
 <% @properties.each do |p| %>
-  <%= "Propriedade: #{p.title}" %>
-  <%= "Descrição: #{p.description}" %>  
-  <%= "Quartos: #{p.rooms}" %>
+  <p> Propriedade:<%=  link_to( p.title , property_path(p.id) )%></p>
+  <p> Descrição:<%=  p.description %>  
+  <p> Quartos:<%=  p.rooms %>
 <% end %>
