@@ -61,7 +61,7 @@ describe 'Visitor visit home_page' do
       expect(page).to have_text("Banheiros: 2")
       expect(page).to have_text("Aceita Pets: sim")
       expect(page).to have_text("Estacionamento: sim")
-      expect(page).to have_text("Diária: 50")
+      expect(page).to have_text("Diária: R$ 50,00")
   end
 
   it 'and view propierties details and return to home page' do
@@ -86,7 +86,7 @@ describe 'Visitor visit home_page' do
     click_on 'Voltar'
 
     #Assert => Garantir (que algo aconteceu ou Não)
-    expect(current_path).to_equal root_path
+    expect(current_path).to eq(root_path)
     expect(page).to have_text("Casa com quintal em Copacabana")
     
     expect(page).to have_text("Cobertura em Manaus")
