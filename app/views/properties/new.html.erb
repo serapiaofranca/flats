@@ -1,6 +1,6 @@
 <h3>Cadastro de Imóvel</h1>
 
-<%= form_with(model: Property.new) do |f| %>
+<%= form_with(model: @property) do |f| %>
     <div>
         <%= f.label :title, 'Título' %>
         <%= f.text_field :title %>
@@ -15,19 +15,20 @@
     </div>
     <div>
         <%= f.label :bathrooms, 'Banheiros' %>
-        <%= f.text_field :bathrooms %>
+        <%= f.number_field :bathrooms %>
     </div>
     <div>
         <%= f.label :daily_rate, 'Diária' %>
-        <%= f.text_field :daily_rate %>
+        <%= f.number_field :daily_rate %>
     </div>
     <div>
-        <%= f.label :pets, 'Aceita pets?' %>
+        <%= f.label :pets, 'Aceita Pets?' %>
         <%= f.check_box :pets %>
     </div>
     <div>
         <%= f.label :parking_slot, 'Possui vaga para estacionar?' %>
         <%= f.check_box :parking_slot %>
     </div>
+    <br>
     <%= f.submit 'Enviar' %>
 <% end %>
