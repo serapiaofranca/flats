@@ -2,6 +2,10 @@
 
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
+<nav>
+  <%= link_to 'Cadastrar Imóvel', new_property_path %>
+</nav>
+
 <% if @properties.empty? %>
   <div><span>Nenhum imóvel disponível</span></div>
 <% end %>
@@ -11,3 +15,5 @@
   <p> Descrição: <%=  p.description %>  
   <p> Quartos: <%=  p.rooms %>
 <% end %>
+
+
