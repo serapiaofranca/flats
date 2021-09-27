@@ -1,6 +1,7 @@
 <dl>
     <dt> Propriedade: </dt><dd><h3><%=  @property.title %></h3></dd>
     <p><dt> Descrição: </dt><dd><%=  @property.description %></dd></p>
+    <p><dt> Tipo: </dt><dd><%=  @property.property_type.name %></dd></p>
     <p><dt> Quartos: </dt><dd><%=  @property.rooms %></dd></p>
     <p><dt> Banheiros: </dt><dd><%=  @property.bathrooms %></dd></p>
     <p><dt> Estacionamento: </dt><dd><%=  @property.parking_slot? ? "sim" : "não" %></dd></p>

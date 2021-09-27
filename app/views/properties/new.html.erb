@@ -17,6 +17,10 @@
         <%= f.label :description, 'Descrição' %>
         <%= f.text_field :description %>
     </div>
+    <div>    
+        <%= f.label :property_type_id, 'Tipo' %>
+        <%= f.collection_select :property_type_id, PropertyType.all, :id, :name, prompt: 'Escolha um tipo' %>
+    </div>
     <div>
         <%= f.label :rooms, 'Quartos' %>
         <%= f.text_field :rooms %>

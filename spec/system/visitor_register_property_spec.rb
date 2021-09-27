@@ -2,15 +2,16 @@ require 'rails_helper'
 describe 'Visitor register property' do
     it 'successfully' do
         #Arrange
-
+        property_type = PropertyType.create!(name: 'Casa')
         #Act
         visit root_path
         click_on 'Cadastrar Imóvel'
         fill_in "Título",	with: "Casa em Florianópolis" 
-        fill_in "Descrição", with: "Ótima casa perto da UFSC"
+        fill_in "Descrição", with: "Ótima casa perto da UFSC"        
         fill_in "Quartos",	with: "3" 
         fill_in "Banheiros",	with: "2" 
         fill_in "Diária",	with: 200
+        select 'Casa',from: 'Tipo'
         check "Aceita Pets?"
         check "Possui vaga para estacionar?"
         click_on 'Enviar'
