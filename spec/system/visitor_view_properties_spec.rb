@@ -5,11 +5,11 @@ describe 'Visitor visit home_page' do
         #Arrange => Preparar (os dados)
         Property.create({ title: "Casa com quintal em Copacabana",
                           description:"Excelente localização, com 2 vagas em garagem coberta" ,
-                          rooms: 3
+                          rooms: 3, bathrooms: 2, daily_rate: 'R$ 180,00'
                         })
         Property.create({ title: "Cobertura em Manaus",
                           description:"Area de 300m2, com area de churrasco e sauna privativa" ,
-                          rooms: 5
+                          rooms: 5, bathrooms: 2, daily_rate: 'R$ 100,00'
                         })
 
         #Act => Agir (executar a funcionalidade)
@@ -46,7 +46,11 @@ describe 'Visitor visit home_page' do
                       })
       Property.create({ title: "Cobertura em Manaus",
         description:"Area de 300m2, com area de churrasco e sauna privativa" ,
-        rooms: 5
+        rooms: 5,
+        parking_slot: true, 
+        bathrooms: 3, 
+        pets: true,
+        daily_rate: 120
       })
 
       #Act => Agir (executar a funcionalidade)
@@ -54,8 +58,8 @@ describe 'Visitor visit home_page' do
       click_on 'Casa com quintal em Copacabana'
 
       #Assert => Garantir (que algo aconteceu ou Não)
-      expect(page).not_to have_text("Area de 300m2, com area de churrasco e sauna privativa")
       expect(page).to have_text("Casa com quintal em Copacabana")
+      expect(page).not_to have_text("Area de 300m2, com area de churrasco e sauna privativa")      
       expect(page).to have_text("Excelente localização, com 2 vagas em garagem coberta")
       expect(page).to have_text("Quartos: 3")
       expect(page).to have_text("Banheiros: 2")
@@ -77,7 +81,11 @@ describe 'Visitor visit home_page' do
 
     Property.create({ title: "Cobertura em Manaus",
       description:"Area de 300m2, com area de churrasco e sauna privativa" ,
-      rooms: 5
+      rooms: 5,
+      parking_slot: true, 
+      bathrooms: 3, 
+      pets: true,
+      daily_rate: 180
     })
     
     #Act => Agir (executar a funcionalidade)
