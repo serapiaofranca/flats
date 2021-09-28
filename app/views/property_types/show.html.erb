@@ -1,0 +1,6 @@
+<h1>Imóveis do Tipo <%= @property_type.name%></h1>
+
+<h2>Imóveis Disponíves</h2>
+<%  @property_type.properties.each do |p|%>
+    <%= p.title %>
+<% end %>
