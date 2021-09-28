@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_182020) do
+ActiveRecord::Schema.define(version: 2021_09_28_222320) do
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2021_09_27_182020) do
     t.decimal "daily_rate"
     t.integer "property_type_id", null: false
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+  end
+
+  create_table "property_locations", force: :cascade do |t|
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "property_types", force: :cascade do |t|

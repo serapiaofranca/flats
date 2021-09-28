@@ -6,7 +6,7 @@ describe 'Visitor register property location' do
         # Act
         visit root_path
         click_on 'Cadastrar Região'
-        fill_in "Região",	with: "Litoral de Florianópolis" 
+        fill_in "Região", with: "Litoral de Florianópolis" 
         click_on 'Cadastrar'
 
         # Assert

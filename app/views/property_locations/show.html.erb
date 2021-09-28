@@ -1,0 +1,14 @@
+<h1>Regiões Cadastradas</h1>
+
+<section>  
+  <% if @property_locations.empty? %>
+    <div><span>Nenhuma Região disponível</span></div>
+  <% else %>
+    <% @property_locations.each do |p| %>
+        <hr>
+        <p> <%= p.location %></p>    
+    <% end %>  
+  <% end %>   
+</section>
+
+<%= link_to('Voltar', root_path)  %> 

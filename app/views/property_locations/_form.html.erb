@@ -1,0 +1,9 @@
+<%= form_with model: property_location do |form| %>
+  <p>
+    <%= form.label :location, 'Região' %><br>
+    <%= form.text_field :location %>
+  </p>
+  <p>
+    <%= form.submit 'Cadastrar' %>
+  </p>
+<% end %>
