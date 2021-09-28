@@ -1,4 +1,13 @@
 <%= form_with model: property_location do |form| %>
+  <div>
+    <% if @property_location.errors.any?%>
+      <ul>
+        <% @property_location.errors.full_messages.each do |error|%>
+            <li> <%= error %> </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <p>
     <%= form.label :location, 'Região' %><br>
     <%= form.text_field :location %>
