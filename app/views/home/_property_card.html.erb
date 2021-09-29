@@ -2,6 +2,7 @@
     <div class="column">
         <div class="card">
             <p> Propriedade: <%=  link_to( p.title , property_path(p.id) )%></p>
+            <p> Região: <%=  p.property_location.location %>    
             <p> Descrição: <%=  p.description %>  
             <p> Quartos: <%=  p.rooms %>
         </div>

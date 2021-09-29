@@ -23,6 +23,6 @@ class PropertiesController < ApplicationController
         params.require(:property).permit(
             :title, :description, :rooms, 
             :bathrooms, :daily_rate, :pets, 
-            :parking_slot, :property_type_id)
+            :parking_slot, :property_type_id, :property_location_id)
     end
 end
