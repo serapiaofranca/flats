@@ -1,7 +1,11 @@
 <h1>Imóveis do Tipo <%= @property_type.name%></h1>
 
 <h2>Imóveis Disponíves</h2>
+
+<br>
+<%= link_to('Voltar', root_path)  %> 
+<br><br>
 <%  @property_type.properties.each do |p|%>
     <% @properties << p%>
 <% end %>
-<%= render 'home/property_card' %>   
+<%= render 'home/property_card' %> 
