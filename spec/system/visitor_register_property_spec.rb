@@ -2,13 +2,15 @@ require 'rails_helper'
 describe 'Visitor register property' do
     it 'successfully' do
         #Arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
         property_type = PropertyType.create!(name: 'Casa')
         property_location = PropertyLocation.create!(location: 'Litoral de Santa Catarina')
-        #Act
-        visit root_path
-        click_on 'Cadastrar Imóvel'
-        fill_in "Título",	with: "Casa em Florianópolis" 
         
+        #Act
+        login_as property_owner, scope: :property_owner
+        visit root_path        
+        click_on 'Cadastrar Imóvel'
+        fill_in "Título",	with: "Casa em Florianópolis"         
         fill_in "Descrição", with: "Ótima casa perto da UFSC"        
         fill_in "Quartos",	with: "3" 
         fill_in "Banheiros",	with: "2" 
@@ -31,6 +33,9 @@ describe 'Visitor register property' do
     end
 
     it 'and must fill all fields' do
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+
+        login_as property_owner, scope: :property_owner
         visit root_path
         click_on 'Cadastrar Imóvel'
         click_on 'Enviar'
@@ -38,5 +43,7 @@ describe 'Visitor register property' do
         expect(page).to have_content('não pode ficar em branco', count: 5)
         expect(Property.count).to eq(0)
     end
+
+    # TODO: verificar que rooms, daily_rate, bathrooms são maiores que zero
     
 end

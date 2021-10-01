@@ -7,3 +7,6 @@ pt-BR:
       property:
         title: 'Título'
         description: 'Descrição'
+  properties:
+    new:
+      title: 'Cadastro de Imóvel'

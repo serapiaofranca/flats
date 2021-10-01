@@ -34,6 +34,7 @@ describe 'visitor edit property' do
 
     it 'Successfully edit' do
         # Arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
         apartamento = PropertyType.create!(name: 'Apartamento')
         amazonia =  PropertyLocation.create!(location: 'Amazônia capital')
         Property.create({ title: "Cobertura em Manaus",
@@ -48,10 +49,11 @@ describe 'visitor edit property' do
         })
 
         # Act
+        login_as property_owner, scope: :property_owner
         visit root_path
         click_on 'Cobertura em Manaus'
         click_on 'Editar'
-        fill_in "daily_rate", with: 'R$ 200,00'
+        fill_in "Diária", with: 200
         click_on 'Enviar'
 
         # Assert
@@ -66,6 +68,7 @@ describe 'visitor edit property' do
 
     it 'Error on edit' do
         # Arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
         apartamento = PropertyType.create!(name: 'Apartamento')
         amazonia =  PropertyLocation.create!(location: 'Amazônia capital')
         Property.create({ title: "Cobertura em Manaus",
@@ -80,10 +83,11 @@ describe 'visitor edit property' do
         })
 
         # Act
+        login_as property_owner, scope: :property_owner
         visit root_path
         click_on 'Cobertura em Manaus'
         click_on 'Editar'
-        fill_in "daily_rate", with: ''
+        fill_in "Diária", with: ''
         click_on 'Enviar'
 
         # Assert
@@ -95,7 +99,7 @@ describe 'visitor edit property' do
         expect(page).to have_content('Quartos')        
         expect(page).to have_content('Aceita Pets?')        
         expect(page).to have_content('Possui vaga para estacionar?')        
-        expect(page).to have_content('Enviar')        
+        expect(page).to have_content('Editar')        
         expect(page).to have_content('Voltar')        
     end
 end
