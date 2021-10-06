@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe 'Visitor register property location' do
+describe 'Property owner register property location' do
     it 'Created region successfully' do
         # Arrange
         property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')

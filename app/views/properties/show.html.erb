@@ -11,7 +11,9 @@
         <%= number_to_currency(@property.daily_rate) %></span>
     </p>
     <footer>
+      <% if property_owner_signed_in? %>
         <%= link_to 'Editar', edit_property_path(@property)%></p> <br><br>       
+      <% end %>              
         <%= link_to('Voltar', root_path)%></p>
     </footer>
 </div>

@@ -1,8 +1,39 @@
 require 'rails_helper'
 
-describe 'visitor edit property' do
+describe 'Property owner edit property' do
+    it 'not access page to edit' do
+        # Arrange        
+        apartamento = PropertyType.create!(name: 'Apartamento')
+        amazonia =  PropertyLocation.create!(location: 'Amazônia capital')
+        Property.create({ title: "Cobertura em Manaus",
+        description:"Area de 300m2, com area de churrasco e sauna privativa" ,
+        property_location: amazonia,
+        property_type: apartamento,
+        rooms: 5,
+        parking_slot: true, 
+        bathrooms: 3, 
+        pets: true,
+        daily_rate: 180
+        })
+
+        # Act        
+        visit root_path
+        click_on 'Cobertura em Manaus'        
+
+        # Assert
+        expect(page).not_to have_link('Editar')  
+        expect(page).to have_link('Entrar')  
+        expect(page).to have_content('Cobertura em Manaus')
+        expect(page).to have_content('Area de 300m2, com area de churrasco e sauna privativ')        
+        expect(page).to have_content('Apartamento')        
+        expect(page).to have_content('5')        
+        expect(page).to have_content('Amazônia capital')        
+        expect(page).to have_content('R$ 180,00')                 
+        expect(page).to have_link('Voltar')        
+    end
     it 'access page to edit' do
         # Arrange
+        property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
         apartamento = PropertyType.create!(name: 'Apartamento')
         amazonia =  PropertyLocation.create!(location: 'Amazônia capital')
         Property.create({ title: "Cobertura em Manaus",
@@ -17,6 +48,7 @@ describe 'visitor edit property' do
         })
 
         # Act
+        login_as property_owner, scope: :property_owner
         visit root_path
         click_on 'Cobertura em Manaus'        
         click_on 'Editar'

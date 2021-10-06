@@ -7,6 +7,14 @@ pt-BR:
       property:
         title: 'Título'
         description: 'Descrição'
+        rooms: 'Quartos'
+        bathrooms: 'Banheiros'
+        daily_rate: 'Diária'
+        pets: 'Aceita Pets?'
+        parking_slot: 'Possui vaga para estacionar?'
+        property_location_id: 'Região'
+        property_type_id: 'Tipo'
+
   properties:
     new:
       title: 'Cadastro de Imóvel'
