@@ -9,7 +9,7 @@ describe 'Visitor visit home_page' do
                         description:"Excelente localização, com 2 vagas em garagem coberta" ,
                         property_location: rio, 
                         property_type: casa,
-                        rooms: 3, bathrooms: 2, daily_rate: 'R$ 180,00'
+                        rooms: 3, bathrooms: 2, daily_rate: 180
                       })
     apartamento = PropertyType.create!(name: 'Apartamento')
     amazonia = PropertyLocation.create!(location: 'Amazonia área urbana')
@@ -17,7 +17,7 @@ describe 'Visitor visit home_page' do
                         description:"Area de 300m2, com area de churrasco e sauna privativa",
                         property_location: amazonia,  
                         property_type: apartamento,
-                        rooms: 5, bathrooms: 2, daily_rate: 'R$ 100,00'
+                        rooms: 5, bathrooms: 2, daily_rate: 100
                       })
       #Act => Agir (executar a funcionalidade)
     visit root_path
