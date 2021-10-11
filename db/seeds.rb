@@ -1,3 +1,6 @@
+    julia = PropertyOwner.create!(email: 'julia@owner.com', password: '123456')
+    john = PropertyOwner.create!(email: 'john@owner.com', password: '123456')
+
     casa = PropertyType.create!(name: 'Casa')
     rio = PropertyLocation.create!(location: 'Litoral Rio de Janeiro')
     Property.create!({ title: "Casa com quintal em Copacabana",
@@ -8,7 +11,8 @@
                       parking_slot: true, 
                       bathrooms: 2, 
                       pets: true,
-                      daily_rate: 50
+                      daily_rate: 50,
+                      property_owner: julia
                     })
 
     apartamento = PropertyType.create!(name: 'Apartamento')
@@ -21,6 +25,7 @@
       parking_slot: true, 
       bathrooms: 3, 
       pets: true,
-      daily_rate: 180
+      daily_rate: 180,
+      property_owner: john
     })
     

@@ -1,27 +1,22 @@
 require 'rails_helper'
-
-describe 'Visitor filter properties by type' do
-
-    it 'using links on nav bar' do
+describe 'Property Owner view own properties' do
+    it 'using menu' do
         # Arrange
-        PropertyType.create!(name: 'Apartamento')
-        PropertyType.create!(name: 'Casa')
-        PropertyType.create!(name: 'Sítio')    
-
-        # Act
-        visit root_path
-
-        # Assert
-        expect(page).to have_link('Apartamento')
-        expect(page).to have_link('Casa')
-        expect(page).to have_link('Sítio')
-    end
+        property_owner = PropertyOwner.create!(email: 'user@property_owner.com', password: '123456')
     
-    it 'sussessfully' do
-        #Arrange => Preparar (os dados)
-        julia = PropertyOwner.create!(email: 'julia@owner.com', password: '123456')
-        john = PropertyOwner.create!(email: 'john@owner.com', password: '123456')
+        #Act 
+        login_as property_owner, scope: :property_owner
+        visit root_path
+    
+        #Assert
+        expect(page).to have_link("Meus Imóveis", href: my_properties_properties_path)
+    end
 
+    it 'using menu' do
+        # Arrange
+        julia = PropertyOwner.create!(email: 'julia@property_owner.com', password: '123456')
+        john = PropertyOwner.create!(email: 'john@property_owner.com', password: '123456')
+       
         rio =  PropertyLocation.create!(location: 'Litoral do Rio de Janeiro')
         casa = PropertyType.create!(name: 'Casa')
         Property.create!({ title: "Casa com quintal em Copacabana",
@@ -49,15 +44,13 @@ describe 'Visitor filter properties by type' do
         property_owner: john
         })
 
-        # Act
+        #Act 
+        login_as julia, scope: :property_owner
         visit root_path
-        click_on 'Casa' 
-
-        # Assert
-        expect(page).to have_css('h1', text: 'Imóveis do Tipo Casa')
-        expect(page).to have_content('Litoral do Rio de Janeiro')
-        expect(page).to have_content('Casa com quintal em Copacabana')
-        expect(page).not_to have_content('Cobertura em Manaus')
-        
+        click_on 'Meus Imóveis'        
+    
+        #Assert
+        expect(page).to have_content("Casa com quintal em Copacabana")
+        expect(page).not_to have_content("Cobertura em Manaus")
     end
 end

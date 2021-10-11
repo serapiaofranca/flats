@@ -3,13 +3,17 @@ require 'rails_helper'
 describe 'Visitor visit home_page' do
   it 'and view propierties' do
     #Arrange => Preparar (os dados)
+    julia = PropertyOwner.create!(email: 'julia@owner.com', password: '123456')
+    john = PropertyOwner.create!(email: 'john@owner.com', password: '123456')
+
     casa = PropertyType.create!(name: 'Casa')
     rio = PropertyLocation.create!(location: 'Litoral Rio de Janeiro')
     Property.create!({ title: "Casa com quintal em Copacabana",
                         description:"Excelente localização, com 2 vagas em garagem coberta" ,
                         property_location: rio, 
                         property_type: casa,
-                        rooms: 3, bathrooms: 2, daily_rate: 180
+                        rooms: 3, bathrooms: 2, daily_rate: 180,
+                        property_owner: julia
                       })
     apartamento = PropertyType.create!(name: 'Apartamento')
     amazonia = PropertyLocation.create!(location: 'Amazonia área urbana')
@@ -17,7 +21,8 @@ describe 'Visitor visit home_page' do
                         description:"Area de 300m2, com area de churrasco e sauna privativa",
                         property_location: amazonia,  
                         property_type: apartamento,
-                        rooms: 5, bathrooms: 2, daily_rate: 100
+                        rooms: 5, bathrooms: 2, daily_rate: 100,
+                        property_owner: john
                       })
       #Act => Agir (executar a funcionalidade)
     visit root_path
@@ -44,6 +49,8 @@ describe 'Visitor visit home_page' do
 
   it 'and view propierties details' do
       #Arrange => Preparar (os dados)
+    john = PropertyOwner.create!(email: 'john@owner.com', password: '123456')      
+
     rio = PropertyLocation.create!(location: 'Litoral Rio de Janeiro')
     casa = PropertyType.create!(name: 'Casa')
     Property.create!({ title: "Casa com quintal em Copacabana",
@@ -54,7 +61,8 @@ describe 'Visitor visit home_page' do
                         parking_slot: true, 
                         bathrooms: 2, 
                         pets: true,
-                        daily_rate: 50
+                        daily_rate: 50,
+                        property_owner: john
                       })
     apartamento = PropertyType.create!(name: 'Apartamento')
     amazonia = PropertyLocation.create!(location: 'Amazonia área urbana')
@@ -66,7 +74,8 @@ describe 'Visitor visit home_page' do
         parking_slot: true, 
         bathrooms: 3, 
         pets: true,
-        daily_rate: 120
+        daily_rate: 120,
+        property_owner: john
     })
 
       #Act => Agir (executar a funcionalidade)
@@ -87,6 +96,8 @@ describe 'Visitor visit home_page' do
 
   it 'and view propierties details and return to home page' do
     #Arrange => Preparar (os dados)
+    john = PropertyOwner.create!(email: 'john@owner.com', password: '123456')      
+
     rio = PropertyLocation.create!(location: 'Litoral Rio de Janeiro')
     casa = PropertyType.create!(name: 'Casa')
     Property.create!({ title: "Casa com quintal em Copacabana",
@@ -97,7 +108,8 @@ describe 'Visitor visit home_page' do
                       parking_slot: true, 
                       bathrooms: 2, 
                       pets: true,
-                      daily_rate: 50
+                      daily_rate: 50,
+                      property_owner: john
                     })
     apartamento = PropertyType.create!(name: 'Apartamento')
     amazonia = PropertyLocation.create!(location: 'Amazonia área urbana')
@@ -109,7 +121,8 @@ describe 'Visitor visit home_page' do
       parking_slot: true, 
       bathrooms: 3, 
       pets: true,
-      daily_rate: 180
+      daily_rate: 180,
+      property_owner: john
     })
     
     #Act => Agir (executar a funcionalidade)

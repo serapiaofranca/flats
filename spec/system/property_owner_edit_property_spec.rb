@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'Property owner edit property' do
     it 'not access page to edit' do
-        # Arrange        
+        # Arrange  
+        julia = PropertyOwner.create!(email: 'julia@owner.com', password: '123456')
         apartamento = PropertyType.create!(name: 'Apartamento')
         amazonia =  PropertyLocation.create!(location: 'Amazônia capital')
         Property.create({ title: "Cobertura em Manaus",
@@ -13,7 +14,8 @@ describe 'Property owner edit property' do
         parking_slot: true, 
         bathrooms: 3, 
         pets: true,
-        daily_rate: 180
+        daily_rate: 180,
+        property_owner: julia
         })
 
         # Act        
@@ -22,15 +24,9 @@ describe 'Property owner edit property' do
 
         # Assert
         expect(page).not_to have_link('Editar')  
-        expect(page).to have_link('Entrar')  
-        expect(page).to have_content('Cobertura em Manaus')
-        expect(page).to have_content('Area de 300m2, com area de churrasco e sauna privativ')        
-        expect(page).to have_content('Apartamento')        
-        expect(page).to have_content('5')        
-        expect(page).to have_content('Amazônia capital')        
-        expect(page).to have_content('R$ 180,00')                 
-        expect(page).to have_link('Voltar')        
+        expect(page).to have_link('Entrar')                                
     end
+
     it 'access page to edit' do
         # Arrange
         property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
@@ -44,7 +40,8 @@ describe 'Property owner edit property' do
         parking_slot: true, 
         bathrooms: 3, 
         pets: true,
-        daily_rate: 180
+        daily_rate: 180,
+        property_owner: property_owner
         })
 
         # Act
@@ -77,7 +74,8 @@ describe 'Property owner edit property' do
             parking_slot: true, 
             bathrooms: 3, 
             pets: true,
-            daily_rate: 180
+            daily_rate: 180,
+            property_owner: property_owner
         })
 
         # Act
@@ -111,7 +109,8 @@ describe 'Property owner edit property' do
         parking_slot: true, 
         bathrooms: 3, 
         pets: true,
-        daily_rate: 180
+        daily_rate: 180,
+        property_owner: property_owner
         })
 
         # Act

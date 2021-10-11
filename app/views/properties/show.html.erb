@@ -10,6 +10,7 @@
     <p>Diária: <span class="price">
         <%= number_to_currency(@property.daily_rate) %></span>
     </p>
+    <p> Imóvel de: <strong><%=  @property.property_owner.email %></strong></p>
     <footer>
       <% if property_owner_signed_in? %>
         <%= link_to 'Editar', edit_property_path(@property)%></p> <br><br>       

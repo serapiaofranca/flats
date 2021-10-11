@@ -41,6 +41,7 @@ describe 'Property owner register property' do
         expect(page).to have_content("Aceita Pets: sim")
         expect(page).to have_content("Estacionamento: sim")
         expect(page).to have_content("Diária: R$ 200,00")
+        expect(page).to have_content("Imóvel de: jane@doe.com.br")
     end
 
     it 'and must fill all fields' do
@@ -93,6 +94,5 @@ describe 'Property owner register property' do
         expect(page).to have_content("Possui vaga para estacionar?")
         expect(page).to have_content("Diária")
         expect(page).to have_link("Voltar")
-    end   
-    
+    end       
 end

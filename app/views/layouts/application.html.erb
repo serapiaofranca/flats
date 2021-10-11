@@ -12,14 +12,17 @@
 
   <body>
     <nav>
-      <% if property_owner_signed_in? %>
-        <p><%= link_to 'Cadastrar Região', new_property_location_path %></p>
-        <p><%= link_to 'Cadastrar Imóvel', new_property_path %></p>
-        <p><%= current_property_owner.email %></p>
-        <p><%= link_to 'Logout', destroy_property_owner_session_path, method: :delete %></p>
-      <% else %>
-        <p><%= link_to 'Entrar', new_property_owner_session_path %></p>
-      <% end %>
+      <ul>
+        <% if property_owner_signed_in? %>
+          <li><%= link_to 'Meus Imóveis', my_properties_properties_path %></li>
+          <li><%= link_to 'Cadastrar Região', new_property_location_path %></li>
+          <li><%= link_to 'Cadastrar Imóvel', new_property_path %></li>
+          <li><%= current_property_owner.email %></li>
+          <li><%= link_to 'Logout', destroy_property_owner_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Entrar', new_property_owner_session_path %></li>
+        <% end %>
+      </ul>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
